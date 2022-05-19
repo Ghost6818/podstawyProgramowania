@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>THE BEST APP</title>
+{% endblock %}
+
+{% block body %}
+<h1>Wybornie że jesteś!</h1>
+<div class="content">
+        <div class = "low-line">
+            <div class="box">
+                <h2>1</h2>
+                <h3>Najszybsza trasa</h3>
+            </div>
+            <div class = "box">
+                <h2>2</h2>
+                <h3>Działa bez internetu</h3>
+            </div>
+            <div class = "box">
+                <h2>3</h2>
+                <h3>Działa jak strzała</h3>
+            </div>
+            <div class = "box">
+                <h2>24/7</h2>
+                <h3>Dostępna pomoc</h3>
+            </div>
+        </div>
+    <table>
+        <tr>
+            <th>Miejsce startowe</th>
+            <th>Trasa</th>
+            <th>Czas dojazdu</th>
+            <th>Miejsce docelowe</th>
+        </tr>
+        <tr>
+            <td>Warszawa</td>
+            <td>180km</td>
+            <td>2,5h</td>
+            <td>Lublin</td>
+            <td>
+                <a href="">Delete</a>
+                <br>
+                <a href="">Uptade</a>
+            </td>
+        </tr>
+    </table>
+    <div class="form">
+        <form action="/" method="POST">
+            <input type="text" name="content" id="content">
+            <input type="submit" value="Add Task">
+        </form>
+    </div>
+</div>
+{% endblock %}
