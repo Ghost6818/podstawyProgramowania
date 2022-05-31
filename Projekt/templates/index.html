@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% block head %}
 <title>THE BEST APP</title>
 {% endblock %}
@@ -33,12 +32,10 @@
         </tr>
         {% for task in tasks %}
         <tr>
-            <td>{{ task.content }}</td>
-            <td>{{ task.date }}</td>
+            <td>{{ task.name }}</td>
+            <td>{{ task.coordinates }}</td>
             <td>
-                <a href="">Delete</a>
-                <br>
-                <a href="">Uptade</a>
+                <a href="/delate/{{ task.id }}">Delete</a>
                 <br>
                 <a href="/update/{{ task.id }}">Update</a>
             </td>
