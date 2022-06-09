@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% block head %}
 <title>THE BEST APP</title>
 {% endblock %}
@@ -25,30 +24,24 @@
                 <h3>Dostępna pomoc</h3>
             </div>
         </div>
-    <table>
+    <table class="table">
         <tr>
-            <th>Miasto</th>
-            <th>Czas przejazu</th>
-            <th>Actions</th>
+            <th class="city">Miejscje startowe</th>
+            <th class="coordinates">Miejsce docelowe</th>
+            <th class="action">Operacje</th>
         </tr>
-        {% for task in tasks %}
+        {% for point in points %}
         <tr>
-            <td>{{ task.content }}</td>
-            <td>{{ task.date }}</td>
+            <td>{{ point.name }}</td>
+            <td>{{ point.coordinates }}</td>
             <td>
-                <a href="">Delete</a>
+
                 <br>
-                <a href="/update/{{ task.id }}">Update</a>
+                <a href="/update/{{ point.id }}">Update</a>
             </td>
         </tr>
         {% endfor %}
     </table>
-    <div class="form">
-        <form action="/" method="POST">
-            <input type="text" name="content" id="content">
-            <input type="submit" value="Add Task">
-
-        </form>
-    </div>
+        </div>
 </div>
 {% endblock %}

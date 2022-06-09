@@ -24,30 +24,39 @@
                 <h3>Dostępna pomoc</h3>
             </div>
         </div>
-    <table>
-        <tr>
-            <th>Miasto</th>
-            <th>Czas przejazu</th>
-            <th>Actions</th>
-        </tr>
-        {% for task in tasks %}
-        <tr>
-            <td>{{ task.name }}</td>
-            <td>{{ task.coordinates }}</td>
-            <td>
-                <a href="/delate/{{ task.id }}">Delete</a>
-                <br>
-                <a href="/update/{{ task.id }}">Update</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
-    <div class="form">
-        <form action="/" method="POST">
-            <input type="text" name="content" id="content">
-            <input type="submit" value="Add Task">
-
-        </form>
+    <div class="main">
+        <br>
+        <table class="table">
+            <tr>
+                <th class="city">Miasta</th>
+                <th class="coordinates">Współrzędne</th>
+                <th class="action">Operacje</th>
+            </tr>
+            {% for point in points %}
+            <tr>
+                <td>{{ point.name }}</td>
+                <td>{{ point.coordinates }}</td>
+                <td>
+                    <a href="/delete/{{ point.id }}">Delete</a>
+                    <br>
+                    <a href="/update/{{ point.id }}">Update</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <div class="form">
+            <form action="/" method="POST">
+                <input type="text" name="name" id="name">
+                <input type="text" name="coordinates" id="coordinates">
+                <input type="submit" value="Add point">
+            </form>
+        </div>
+            </div>
+        <div class="calculate">
+            <form action="/calculate" method="POST">
+                <input type="submit" value="Oblicz">
+            </form>
+        </div>
     </div>
 </div>
 {% endblock %}

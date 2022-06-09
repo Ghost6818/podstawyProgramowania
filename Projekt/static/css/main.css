@@ -1,21 +1,53 @@
-.body {
-    font-family: 'Titillium';
-    background: blue;
+body {
+    font-family: 'Roboto', sans-serif;
+    background: rgb(0, 182, 255);
+    text-align: center;
 }
 
 .container {
     width: 1000px;
-    margin: 20 auto;
+    display: flex;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 100px;
+    text-align: center;
+    margin-top: 20px;
+    text-shadow:  0 1px 0 #ccc,
+    0 2px 0 #c9c9c9,
+    0 3px 0 #bbb,
+    0 4px 0 #b9b9b9,
+    0 5px 0 #aaa,
+    1px 18px 6px rgba(16,16,16,0.4),
+    1px 22px 10px rgba(16,16,16,0.2),
+    1px 25px 35px rgba(16,16,16,0.2),
+    1px 30px 60px rgba(16,16,16,0.4);
+}
+
+table {
+    border-collapse: collapse;
+    margin-left: 200px;
+    margin-top: 20px;
+    }
+
+.main {
+    background: rgb(5, 28, 90);
+    border-radius: 10px;
+    margin-bottom: 30px;
+    margin-top: 50px;
+    margin-left: 250px;
+    margin-right: 250px;
+    height: 250px;
+    color: white;
 }
 
 .header {
     height: 600px;
     background: url("./../img/bg.jpg");
     background-size: cover;
-}
-
-.header .logo {
-    background: white;
 }
 
 .header .menu ul {
@@ -44,7 +76,7 @@
 .header .boxes .box {
     width: 100px;
     height: 100px;
-    background: rgb(5, 28, 90);
+        background: rgb(5, 28, 90);
     margin: 2px;
     display: flex;
     justify-content: center;
@@ -79,7 +111,7 @@
 .low-line {
     display: flex;
     justify-content: space-between;
-    background:rgb(18, 173, 235)
+    background: #002171;
 }
 
 .low-line .box {
