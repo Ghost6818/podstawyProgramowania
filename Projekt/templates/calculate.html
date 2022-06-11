@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block body %}
-<h1>Wybornie że jesteś!</h1>
+<h1>Najlepsza trasa!</h1>
 <div class="content">
         <div class = "low-line">
             <div class="box">
@@ -28,17 +28,11 @@
         <tr>
             <th class="city">Miejscje startowe</th>
             <th class="coordinates">Miejsce docelowe</th>
-            <th class="action">Operacje</th>
         </tr>
         {% for point in points %}
         <tr>
             <td>{{ point.name }}</td>
             <td>{{ point.coordinates }}</td>
-            <td>
-
-                <br>
-                <a href="/update/{{ point.id }}">Update</a>
-            </td>
         </tr>
         {% endfor %}
     </table>

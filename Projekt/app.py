@@ -17,8 +17,6 @@ class Road(db.Model):
     point_o = db.Column(db.Integer, nullable=False)
     point_s = db.Column(db.Integer, nullable=False)
     distance = db.Column(db.Integer, nullable=False)
-    origin = db.Column(db.Integer, nullable=False)
-    road = db.Column(db.Integer, nullable=False)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -59,10 +57,9 @@ def delete(id):
 @app.route('/calculate', methods=['GET', 'POST'])
 def calculate():
     print("TUTAJ")
-
     points = Point.query.order_by(Point.name).all()
-
     print(points)
+
     API_KEY = "AIzaSyDbufDUZ5lW7lWJOrdYlrY9zPCSmHcEAMM"
     client = googlemaps.Client(API_KEY)
 
@@ -73,17 +70,38 @@ def calculate():
                                                       destination=destination.coordinates,
                                                       mode="driving",
                                                       avoid="ferries")
-
+                print(p.name, 'do', destination.name, directions_result[0]['legs'][0]['distance']['value'])
                 distance = directions_result[0]['legs'][0]['distance']
-                road = Road(id=1, origin_id=p.id, destination_id=destination.id,
-                            distance=distance['value']) #jedna  trasa pomiedzy p a distance w tabeli Road
-    #CHANGE IT
-    db.session.add(points)
+                road = Road(point_o =p.id, point_s=destination.id,
+                            distance=distance['value'])   #jedna  trasa pomiedzy p a distance w tabeli Road
+                #CHANGE IT
+                db.session.add(road)
+                db.session.commit()
+                return render_template('calculate.html', points=points)
 
-    db.session.commit()
 
-    return redirect('/')
+def first(collection):
+    return next(iter(collection))
+
+def distance(a, b):
+    roads = set(Road.query.all())
+    for r in roads:
+        if a.id == r.origin and b.id == r.destination:
+            return r.distance
+
+def nearest_neighbour(a, points):
+    return min(points, key=lambda c: distance(c, a))
+
+def nn_tour(points):
+    start = first(points)
+    tour = [start] #dodawanie point
+    unvisited = set(points - {start})
+    while unvisited:
+        c = nearest_neighbour(tour[-1], unvisited)
+        tour.append(c)
+        unvisited.remove(c)
+    return tour
+
 
 if __name__ == "__main__":
     app.run(debug=True)
-
