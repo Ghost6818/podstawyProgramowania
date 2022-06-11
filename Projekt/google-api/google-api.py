@@ -11,10 +11,10 @@ class Point:
         self.cordinates = cordinates
 
 class Road:
-    def __init__(self, id, id_origin, id_destination, distance, road):
+    def __init__(self, id, origin_id, destination_id, distance, road):
         self.id = id
-        self.id_origin = id_origin
-        self.id_destination = id_destination
+        self.origin_id = origin_id
+        self.destination_id = destination_id
         self.distance = distance
         self.road = road
 

@@ -6,24 +6,24 @@
 {% block body %}
 <h1>Wybornie że jesteś!</h1>
 <div class="content">
-        <div class = "low-line">
-            <div class="box">
-                <h2>1</h2>
-                <h3>Najszybsza trasa</h3>
-            </div>
-            <div class = "box">
-                <h2>2</h2>
-                <h3>Działa bez internetu</h3>
-            </div>
-            <div class = "box">
-                <h2>3</h2>
-                <h3>Działa jak strzała</h3>
-            </div>
-            <div class = "box">
-                <h2>24/7</h2>
-                <h3>Dostępna pomoc</h3>
-            </div>
+    <div class = "low-line">
+        <div class="box">
+            <h2>1</h2>
+            <h3>Najszybsza trasa</h3>
         </div>
+        <div class = "box">
+            <h2>2</h2>
+            <h3>Działa bez internetu</h3>
+        </div>
+        <div class = "box">
+            <h2>3</h2>
+            <h3>Działa jak strzała</h3>
+        </div>
+        <div class = "box">
+            <h2>24/7</h2>
+            <h3>Dostępna pomoc</h3>
+        </div>
+    </div>
     <div class="main">
         <br>
         <table class="table">
@@ -44,14 +44,15 @@
             </tr>
             {% endfor %}
         </table>
+        <br/>
         <div class="form">
             <form action="/" method="POST">
                 <input type="text" name="name" id="name">
                 <input type="text" name="coordinates" id="coordinates">
                 <input type="submit" value="Add point">
             </form>
+            <br/>
         </div>
-            </div>
         <div class="calculate">
             <form action="/calculate" method="POST">
                 <input type="submit" value="Oblicz">

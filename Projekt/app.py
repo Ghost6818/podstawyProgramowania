@@ -17,6 +17,7 @@ class Road(db.Model):
     point_o = db.Column(db.Integer, nullable=False)
     point_s = db.Column(db.Integer, nullable=False)
     distance = db.Column(db.Integer, nullable=False)
+    origin = db.Column(db.Integer, nullable=False)
     road = db.Column(db.Integer, nullable=False)
 
 @app.route('/', methods=['GET', 'POST'])
@@ -68,22 +69,20 @@ def calculate():
     for p in points:
         for destination in points:
             if p != destination:
-                directions_result = client.directions(origin=p.cordinates,
-                                                      destination=destination.cordinates,
+                directions_result = client.directions(origin=p.coordinates,
+                                                      destination=destination.coordinates,
                                                       mode="driving",
                                                       avoid="ferries")
 
                 distance = directions_result[0]['legs'][0]['distance']
-                road = Road(id=1, id_origin=p.id, id_destination=destination.id,
+                road = Road(id=1, origin_id=p.id, destination_id=destination.id,
                             distance=distance['value']) #jedna  trasa pomiedzy p a distance w tabeli Road
     #CHANGE IT
-    #db.session.add(points)
+    db.session.add(points)
 
     db.session.commit()
 
-    #return redirect('/')
-    #else:
-    # return render_template('index.html', points = None)
+    return redirect('/')
 
 if __name__ == "__main__":
     app.run(debug=True)
