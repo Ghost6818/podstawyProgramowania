@@ -73,31 +73,33 @@ def calculate():
                 distance = directions_result[0]['legs'][0]['distance']
                 road = Road(point_o=p.id, point_s=destination.id,
                             distance=distance['value'])   #jedna  trasa pomiedzy p a distance w tabeli Road
-                db.session.add(road)
-                db.session.commit()
-                return render_template('calculate.html', points=points)
 
-# def first(collection):
-#     return next(iter(collection))
-#
-# def distance(a, b):
-#     roads = set(Road.query.all())
-#     for r in roads:
-#         if a.id == r.origin and b.id == r.destination:
-#             return r.distance
-#
-# def nearest_neighbour(a, points, roads):
-#     return min(points, key=lambda c: distance(c, a,roads))
-#
-# def nn_tour(points):
-#     start = first(points)
-#     tour = [start] #dodawanie point
-#     unvisited = set(points - {start})
-#     while unvisited:
-#         c = nearest_neighbour(tour[-1], unvisited)
-#         tour.append(c)
-#         unvisited.remove(c)
-#     return tour
+
+    def first(collection):
+        return next(iter(collection))
+
+    def distance(a, b):
+        roads = set(Road.query.all())
+        for r in roads:
+            if a.id == r.origin and b.id == r.destination:
+                return r.distance
+
+    def nearest_neighbour(a, points, roads):
+        return min(points, key=lambda c: distance(c, a,roads))
+
+    def nn_tour(points):
+        start = first(points)
+        tour = [start] #dodawanie point
+        unvisited = set(points - {start})
+        while unvisited:
+            c = nearest_neighbour(tour[-1], unvisited)
+            tour.append(c)
+            unvisited.remove(c)
+        return tour
+
+    db.session.add(road)
+    db.session.commit()
+    return render_template('calculate.html', points=points)
 
 if __name__ == "__main__":
     app.run(debug=True)
