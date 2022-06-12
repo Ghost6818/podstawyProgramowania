@@ -11,22 +11,27 @@ class Point:
         self.cordinates = cordinates
 
 class Road:
-    def __init__(self, id, origin_id, destination_id, distance, road):
+    def __init__(self, id, id_origin, id_destination, distance):
         self.id = id
-        self.origin_id = origin_id
-        self.destination_id = destination_id
+        self.id_origin = id_origin
+        self.id_destination = id_destination
         self.distance = distance
-        self.road = road
 
-points = Point.query.order_by(Point.name).all()
 #sumulacja wprowadzania punktów na stroe
+p1 = Point(1, "Lublin", "51.2505562,20.9781065")
+p2 = Point(2, "Warszawa", "52.2505562,20.9781065")
+p3 = Point(3, "Lodz", "53.2505562,20.9781065")
+
+points = {p1, p2, p3}
+roads=[]
+
+print(points)
+for p in points:
+    print(p.name)
 
 
-# points = set(Point.query.all())
-#funkcja obliczjąca krawędzie app
-
-#OBLICZENIE OSTATECZNEJ KLASY (wyświetl na podstwronie calculate
-#iter next obiekt (kolejny element z naszego zbioru iteruje
+#OBLICZENIE OSTATECZNEJ TRASY (wyświetl na podstwronie calculate
+#iter next obiekt (kolejny element z naszego zbioru iteruje)
 #pobranie pierwszego elementu i ustawienie jego jako startowy punkt
 #obliczenie z wyłączeniem punktu startowego
 #dopóki jest jeszcze jakiś nie odwiedzony
@@ -46,7 +51,7 @@ def distance(a, b, roads):
             return r.distance
 
 def nearest_neighbour(a, points):
-    return min(points, key=lambda c: distance(c, a, roads))
+    return min(points, key=lambda c: distance(c, a))
 
 def nn_tour(points):
     start = first(points)

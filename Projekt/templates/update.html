@@ -11,7 +11,8 @@
 
     <div class="from">
         <from action="/update/{{ task.id }}" methon="POST">
-            <input type="text" name="content" id="content" value="{{ task.content }}">
+            <input type="text" name="name" id="name" value="{{ task.name }}">
+            <input type="text" name="coordinates" id="coordinates" value="{{ task.coordinates }}">
             <input type="submit" value="Update Task">
         </from>    </div>
 </div>

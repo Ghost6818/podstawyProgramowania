@@ -24,15 +24,24 @@
                 <h3>Dostępna pomoc</h3>
             </div>
         </div>
+    <br/>
+     <img src="https://storage.googleapis.com/support-forums-api/attachment/thread-66146071-16726682958808905381.png" height="60%" width="60%">
     <table class="table">
         <tr>
-            <th class="city">Miejscje startowe</th>
+            <th class="city">Tu zacznij</th>
             <th class="coordinates">Miejsce docelowe</th>
+            <th>Dystans</th>
         </tr>
-        {% for point in points %}
+        {% for road in points %}
         <tr>
-            <td>{{ point.name }}</td>
-            <td>{{ point.coordinates }}</td>
+            <td>{{ road.point_o }}</td>
+            <td>{{ road.point_s }}</td>
+            <td>{{ road.distance }}</td>
+            <td>
+                <a href="/delete/{{ road.id }}">Delete</a>
+                <br>
+                <a href="/update/{{ road.id }}">Update</a>
+            </td>
         </tr>
         {% endfor %}
     </table>
