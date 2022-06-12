@@ -73,11 +73,11 @@ def calculate():
                                                       mode="driving",
                                                       avoid="ferries")
 
-                print(p.name, 'do', destination.name, directions_result[0]['legs'][0]['distance']['text'])
-
                 distance = directions_result[0]['legs'][0]['distance']
                 road = Road(point_o=p.id, point_s=destination.id,
-                            distance=distance['value'])   #jedna  trasa pomiedzy p a distance w tabeli Road
+                            distance=distance['value']) #jedna  trasa pomiedzy p a distance w tabeli Road
+
+    #byłą próba niestety nieudana :(
 
     # def first(collection):
     #     return next(iter(collection))
