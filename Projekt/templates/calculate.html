@@ -26,10 +26,11 @@
         </div>
     <br/>
      <img src="https://storage.googleapis.com/support-forums-api/attachment/thread-66146071-16726682958808905381.png" height="60%" width="60%">
+    <div class="main">
     <table class="table">
         <tr>
-            <th class="city">Tu zacznij</th>
-            <th class="coordinates">Miejsce docelowe</th>
+            <th>Tu zacznij</th>
+            <th>Miejsce docelowe</th>
             <th>Dystans</th>
         </tr>
         {% for road in points %}
@@ -37,14 +38,9 @@
             <td>{{ road.point_o }}</td>
             <td>{{ road.point_s }}</td>
             <td>{{ road.distance }}</td>
-            <td>
-                <a href="/delete/{{ road.id }}">Delete</a>
-                <br>
-                <a href="/update/{{ road.id }}">Update</a>
-            </td>
         </tr>
         {% endfor %}
     </table>
-        </div>
+    </div>
 </div>
 {% endblock %}
